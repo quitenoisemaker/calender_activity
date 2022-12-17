@@ -15,7 +15,11 @@ class CreateActivityDatesTable extends Migration
     {
         Schema::create('activity_dates', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('activity_id');
+            $table->date('activity_date')->index();
             $table->timestamps();
+
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

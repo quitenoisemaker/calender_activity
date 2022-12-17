@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\Passport;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
@@ -50,6 +51,11 @@ class User extends Authenticatable
     {
         # code...
         return $this->BelongsTo(Role::class);
+    }
+
+    public function createUser($request)
+    {
+        return self::create($request);
     }
 
     // method for admin authorization
