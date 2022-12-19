@@ -12,7 +12,12 @@
     <!-- Plugin css -->
     <link href="{{ asset('assets\libs\fullcalendar\fullcalendar.min.css') }}" rel="stylesheet" type="text/css">
 
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script> --}}
+
     <!-- Table datatable css -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link href="{{ asset('assets\libs\datatables\dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
 
     <link href="{{ asset('assets\libs\datatables\buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
@@ -222,6 +227,13 @@
                             <a href="{{ url('admin/home') }}">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Dashboard </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('admin.activity.index') }}">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Activity </span>
                             </a>
                         </li>
 
