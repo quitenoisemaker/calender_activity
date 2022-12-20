@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\AdminController;
+use App\Models\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -32,4 +33,15 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/activity/edit/{id}', [AdminController::class, 'edit'])->name('admin.activity.edit');
     Route::put('/activity/update/{id}', [AdminController::class, 'update'])->name('admin.activity.update');
     Route::delete('/activity/delete/{id}', [AdminController::class, 'destroy'])->name('admin.activity.destroy');
+
+    Route::get('/users', [AdminController::class, 'getUsers'])->name('admin.users.index');
+    Route::get('/user/activities/{id}', [AdminController::class, 'getUserActivities'])->name('admin.user.activities');
+    Route::get('/user/activity/edit/{activity_id}/{user_id}', [AdminController::class, 'editUserActivity'])->name('admin.activity.edit.user');
+    Route::post('/user/activity/update/{activity_id}/{user_id}', [AdminController::class, 'updateUserActivity'])->name('admin.activity.update.user');
+});
+
+Route::get('/test', function (Activity $activity) {
+    $end = "2022-12-19";
+    $start = "2022-12-21";
+    return $activity->getActivityCount($start, $end);
 });

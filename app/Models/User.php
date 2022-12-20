@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Activity;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -56,6 +57,11 @@ class User extends Authenticatable
     public function createUser($request)
     {
         return self::create($request);
+    }
+
+    public function activity()
+    {
+        return $this->belongsToMany(Activity::class, 'activity_users');
     }
 
     // method for admin authorization

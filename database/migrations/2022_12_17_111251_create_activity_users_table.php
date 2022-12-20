@@ -15,12 +15,9 @@ class CreateActivityUsersTable extends Migration
     {
         Schema::create('activity_users', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('activity_id');
+            $table->integer('user_id');
+            $table->integer('activity_id');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -47,21 +47,22 @@
                                             <input type="text" class="form-control" name="title" id="title">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="image">Image</label>
+                                            <label for="image">Image <span class="text-danger">*</span>
+                                            </label>
                                             <input type="file" class="form-control" accept="image/*" name="image"
                                                 id="image">
                                         </div>
 
                                         <div class="form-group col-md-12">
-                                            <label for="description">Description</label>
+                                            <label for="description">Description <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="description" id="description">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="start_date">Start Date</label>
+                                            <label for="start_date">Start Date <span class="text-danger">*</span></label>
                                             <input type="date" class="form-control" name="start_date" id="start_date">
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="end_date">End date</label>
+                                            <label for="end_date">End date <span class="text-danger">*</span></label>
                                             <input type="date" class="form-control" name="end_date" id="end_date">
                                         </div>
 

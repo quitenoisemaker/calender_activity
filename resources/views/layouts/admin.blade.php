@@ -24,9 +24,10 @@
     <link href="{{ asset('assets\libs\datatables\responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets\libs\datatables\select.bootstrap4.min.css') }}" rel="stylesheet" type="text/css">
     <!-- App css -->
-    <link href="{{ asset('assets\css\bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+    <link href="{{ asset('assets\css\bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css"
+        id="bootstrap-stylesheet">
     <link href="{{ asset('assets\css\icons.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets\css\app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">    
+    <link href="{{ asset('assets\css\app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-stylesheet">
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -43,7 +44,8 @@
 
 
                 <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle  waves-effect waves-light" data-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="mdi mdi-bell-outline noti-icon"></i>
                         <span class="noti-icon-badge"></span>
                     </a>
@@ -126,9 +128,12 @@
 
 
                 <li class="dropdown notification-list">
-                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
-                        <span class="d-none d-sm-inline-block ml-1 font-weight-medium">{{ Auth::user()->fname }}</span>
+                    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown"
+                        href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="{{ asset('assets\images\users\avatar-1.jpg') }}" alt="user-image"
+                            class="rounded-circle">
+                        <span
+                            class="d-none d-sm-inline-block ml-1 font-weight-medium">{{ Auth::user()->fname }}</span>
                         <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -159,7 +164,8 @@
                                 <span>Logout</span>
                             </a> --}}
 
-                        <a class="dropdown-item notify-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a class="dropdown-item notify-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <span> {{ __('Logout') }}</span>
                         </a>
@@ -236,9 +242,15 @@
                                 <span> Activity </span>
                             </a>
                         </li>
+                        <li>
+                            <a href="{{ route('admin.users.index') }}">
+                                <i class="mdi mdi-view-dashboard"></i>
+                                <span> Users </span>
+                            </a>
+                        </li>
 
 
-                    </div>
+                </div>
                 <!-- End Sidebar -->
 
                 <div class="clearfix"></div>
@@ -306,7 +318,8 @@
     <script src="{{ asset('assets\js\pages\datatables.init.js') }}"></script>
 
     {{-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script><script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+        integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     <!-- App js -->
     <script src="{{ asset('assets\js\app.min.js') }}"></script>
 
