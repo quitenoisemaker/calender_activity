@@ -38,6 +38,8 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/user/activities/{id}', [AdminController::class, 'getUserActivities'])->name('admin.user.activities');
     Route::get('/user/activity/edit/{activity_id}/{user_id}', [AdminController::class, 'editUserActivity'])->name('admin.activity.edit.user');
     Route::post('/user/activity/update/{activity_id}/{user_id}', [AdminController::class, 'updateUserActivity'])->name('admin.activity.update.user');
+    Route::get('/user/activity/create/{user_id}', [AdminController::class, 'createUserActivity'])->name('admin.activity.create.user');
+    Route::post('/user/activity/store/{user_id}', [AdminController::class, 'storeUserActivity'])->name('admin.activity.store.user');
 });
 
 Route::get('/test', function (Activity $activity) {

@@ -16,7 +16,7 @@ class Controller extends BaseController
         return response()->json([
             'message' => $message,
             'status' => $httpcode,
-            'data' => $data
+            'data' => array($data)
         ], $httpcode);
     }
 
@@ -25,7 +25,7 @@ class Controller extends BaseController
         return response()->json([
             'message' => $message,
             'status' => $httpcode,
-            'data' => $data
+            'data' => array($data)
         ], $httpcode);
     }
 }

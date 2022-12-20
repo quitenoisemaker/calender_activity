@@ -29,6 +29,10 @@
                     <div class="col-12">
                         <div class="card-box">
                             <div class="row">
+                                <div>
+                                    <a href="{{ route('admin.activity.create.user', ['user_id' => $id]) }}"
+                                        class="btn btn-primary btn-sm m-1">Add Activity</a>
+                                </div>
                                 <div class="col-lg-12">
                                     <div class="card-box text-white">
 
@@ -58,8 +62,11 @@
                                                             <td>{{ $userActivity->end_date }} </td>
                                                             <td>
                                                                 <a href="{{ route('admin.activity.edit.user', ['activity_id' => $userActivity->id, 'user_id' => $id]) }}"
-                                                                    class="btn btn-primary btn-sm m-1">Edit User
+                                                                    class="btn btn-warning
+                                                                     btn-sm m-1">Edit
+                                                                    User
                                                                     Activity</a>
+
                                                             </td>
                                                         </tr>
                                                     @endforeach

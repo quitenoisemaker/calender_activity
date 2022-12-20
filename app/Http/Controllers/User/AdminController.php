@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Activity;
+use App\Models\ActivityUser;
 use Illuminate\Http\Request;
 use App\Models\Models\ActivityDate;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
+use App\Http\Requests\StoreUserActivityRequest;
 use App\Http\Requests\UpdateUserActivityRequest;
-use App\Models\ActivityUser;
-use App\Models\Role;
 
 class AdminController extends Controller
 {
@@ -137,14 +138,13 @@ class AdminController extends Controller
         return view('admin.user.activity_edit', compact('getActivity', 'user_id'));
     }
 
-    public function updateUserActivity(UpdateUserActivityRequest $request, $activity_id, $user_id, Activity $storeActivity)
+    public function updateUserActivity(UpdateUserActivityRequest $request, $activity_id, $user_id, Activity $storeActivity, ActivityUser $activityUser)
     {
-        $getMaximumCount = $storeActivity->getActivityCount($request->start_date, $request->end_date);
-
         //alert when maximum activity
+        $getMaximumCount = $storeActivity->getActivityCount($request->start_date, $request->end_date);
         if ($getMaximumCount) {
             return "<script>alert('$getMaximumCount')
-            window.location = '/admin/activity/create'</script>";
+            window.location = '/admin/user/activity/edit/'+$activity_id+'/'+$user_id</script>";
         }
         //end
 
@@ -155,12 +155,39 @@ class AdminController extends Controller
         } else {
             $validatedData['image'] = $request->file('image')->store('activityImage', 'public');
         }
+        //create activity
         $activity = $storeActivity->createActivity($validatedData);
 
         //get users and attach activity
-        $getUserActivity = ActivityUser::where('user_id', $user_id)->where('activity_id', $activity_id)->first();
-        $getUserActivity->activity_id = $activity->id;
-        $getUserActivity->save();
+        $activityUser->modifyUserActivity($user_id, $activity_id, $activity->id);
+
+        return redirect('admin/user/activities/' . $user_id);
+    }
+
+    public function createUserActivity($user_id)
+    {
+        return view('admin.user.activity_create', compact('user_id'));
+    }
+
+    public function storeUserActivity(StoreUserActivityRequest $request, Activity $storeActivity, $user_id)
+    {
+        //alert when maximum activity
+        $getMaximumCount = $storeActivity->getActivityCount($request->start_date, $request->end_date);
+        if ($getMaximumCount) {
+            return "<script>alert('$getMaximumCount')
+            window.location = '/admin/user/activity/create'+ $user_id</script>";
+        }
+        //end
+
+        $validatedData = $request->validated();
+        $image = $request->file('image')->store('activityImage', 'public');
+        $validatedData['image'] = $image;
+
+        //create activity
+        $activity = $storeActivity->createActivity($validatedData);
+
+        //get users and attach activity 
+        $activity->user()->attach($user_id);
 
         return redirect('admin/user/activities/' . $user_id);
     }

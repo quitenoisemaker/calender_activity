@@ -24,7 +24,5 @@ Route::post('/user/register', [UserController::class, 'userRegisterAPI']);
 
 Route::post('/user/login', [UserController::class, 'userLoginAPI']);
 Route::middleware('auth:api')->prefix('user')->group(function () {
-    Route::get('/test', function (Request $request) {
-        return Auth::user();
-    });
+    Route::get('/activities', [UserController::class, 'getUserActivitiesAPI']);
 });

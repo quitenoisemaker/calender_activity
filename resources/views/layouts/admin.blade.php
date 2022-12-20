@@ -237,7 +237,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('admin.activity.index') }}">
+                            <a href="{{ route('admin.activity.create') }}">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Activity </span>
                             </a>

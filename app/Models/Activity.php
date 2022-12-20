@@ -35,10 +35,26 @@ class Activity extends Model
     {
         if (self::whereDate('start_date', $start_date)->orWhereDate('end_date', $start_date)->count() > self::ACTIVITY_MAXIMUM) {
             // user found
-            return "Maximun activity has been reached for the start_date";
+            return "Maximum activity has been reached for the start_date";
         } elseif (self::whereDate('start_date', $end_date)->orWhereDate('end_date', $end_date)->count() > self::ACTIVITY_MAXIMUM) {
             # code...
-            return "Maximun activity has been reached for the end_date";
+            return "Maximum activity has been reached for the end_date";
         }
+    }
+
+    public function getUserActivitiesOnDateRange($from, $to, $user)
+    {
+        # code...
+        $query = self::select('activities.*')
+            ->join('activity_users', 'activity_users.activity_id', '=', 'activities.id');
+        if ($from) {
+            $query = $query->where('activity_users.user_id', $user)->whereDate('activities.start_date', '>=', $from);
+        }
+        if ($to) {
+            $query = $query->where('activity_users.user_id', $user)->whereDate('activities.start_date', '<=', $to);
+        }
+        $query = $query->orderBy('activities.id', 'desc')
+            ->paginate(10);
+        return $query;
     }
 }
