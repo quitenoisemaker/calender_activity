@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\User\AdminController;
-use App\Models\Models\Activity;
+use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,9 +25,11 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/all/activity', [AdminController::class, 'getAllActivity']);
 Route::middleware(['admin'])->prefix('admin')->group(function () {
-    Route::get('/home', [AdminController::class, 'index'])->name('home.admin');
-    Route::get('/activity', [AdminController::class, 'activityIndex'])->name('admin.activity.index');
+    Route::get('/home', [AdminController::class, 'dashboardIndex'])->name('home.admin');
+    Route::get('/activity', [AdminController::class, 'index'])->name('admin.activity.index');
+
     Route::get('/activity/create', [AdminController::class, 'create'])->name('admin.activity.create');
     Route::post('/activity/store', [AdminController::class, 'store'])->name('admin.activity.add');
     Route::get('/activity/edit/{id}', [AdminController::class, 'edit'])->name('admin.activity.edit');

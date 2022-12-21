@@ -14,6 +14,7 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Requests\StoreUserActivityRequest;
 use App\Http\Requests\UpdateUserActivityRequest;
+use App\Http\Resources\AllActivityResource;
 
 class AdminController extends Controller
 {
@@ -21,7 +22,12 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.index');
+
+        $events = array();
+        $getActivities = Activity::select('id', 'title', 'start_date', 'end_date')->get();
+        $events =  AllActivityResource::collection($getActivities);
+        $events = $events->toJson();
+        return view('admin.activity.index', compact('events'));
     }
 
     public function create()
@@ -56,28 +62,9 @@ class AdminController extends Controller
         return back();
     }
 
-    public function activityIndex()
+    public function dashboardIndex()
     {
-        # code...
-        // $queries = [];
-        // $getActivities = Activity::select('id', 'title', 'start_date', 'end_date')->get();
-
-        // foreach ($getActivities as $getActivity) {
-        //     # code...
-        //     $queries[] = array(
-        //         'title' => $getActivity->title,
-        //         'start_date' => $getActivity->start_date,
-        //         'end_date' => $getActivity->end_date,
-        //     );
-        // }
-
-        // //return $queries;
-
-        return view('admin.activity.index');
-        // return response()->json([
-        //     'data' => $queries,
-        //     'success' => true,
-        // ]);
+        return view('admin.index');
     }
 
 
@@ -190,5 +177,23 @@ class AdminController extends Controller
         $activity->user()->attach($user_id);
 
         return redirect('admin/user/activities/' . $user_id);
+    }
+
+
+    public function getAllActivity()
+    {
+        $queries = [];
+        $getActivities = Activity::select('id', 'title', 'start_date', 'end_date')->get();
+
+        foreach ($getActivities as $getActivity) {
+            $queries[] = array(
+                'title' => $getActivity->title,
+                'start' => "2022-12-22 09:08:25",
+                'end' => "2022-12-22 09:08:25",
+            );
+        }
+        return response()->json([
+            'data' => $queries
+        ]);
     }
 }

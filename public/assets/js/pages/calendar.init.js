@@ -1,14 +1,14 @@
 !(function (l) {
     "use strict";
 
-    $("#calendar").fullCalendar({
-        editable: true,
-        header: {
-            left: "prev,next today",
-            center: "title",
-            right: "month,agendaWeek,agendaDay",
-        },
-    });
+    // $("#calendar").fullCalendar({
+    //     editable: true,
+    //     header: {
+    //         left: "prev,next today",
+    //         center: "title",
+    //         right: "month,agendaWeek,agendaDay",
+    //     },
+    // });
     var e = function () {
         (this.$body = l("body")),
             (this.$modal = l("#event-modal")),
@@ -69,95 +69,6 @@
                     );
                 });
         }),
-        (e.prototype.onSelect = function (t, a, e) {
-            var o = this;
-            var e = new Date();
-            alert(e.getDate());
-            o.$modal.modal({ backdrop: "static" });
-            var i = l(
-                "<form enctype='multipart/form-data' id='myForm'></form>"
-            );
-            i.append("<div class='row'></div>"),
-                i
-                    .find(".row")
-                    .append(
-                        "<div class='col-md-6'><div class='form-group'><label class='control-label'>Title</label><input class='form-control' placeholder='Enter title' type='text' name='title'/></div></div>"
-                    )
-                    .append(
-                        "<div class='col-md-6'><div class='form-group'><label class='control-label'>Image</label><input class='form-control' type='file' name='image'/></div></div>"
-                    )
-                    .append(
-                        "<div class='col-md-12'><div class='form-group'><label class='control-label'>Description</label><input class='form-control' placeholder='Enter Description' type='text' name='description'/></div></div>"
-                    ),
-                o.$modal
-                    .find(".delete-event")
-                    .hide()
-                    .end()
-                    .find(".save-event")
-                    .show()
-                    .end()
-                    .find(".modal-body")
-                    .empty()
-                    .prepend(i)
-                    .end()
-                    .find(".save-event")
-                    .unbind("click")
-                    .click(function () {
-                        i.submit();
-                    }),
-                o.$modal.find("form").on("submit", function () {
-                    var formData = new FormData(this);
-                    var e = i.find("input[name='title']").val();
-                    var image = i.find("input[name='image']").val();
-
-                    var description = i.find("input[name='description']").val(),
-                        n =
-                            (i.find("input[name='beginning']").val(),
-                            i.find("input[name='ending']").val(),
-                            i
-                                .find("select[name='category'] option:checked")
-                                .val());
-
-                    $.ajax({
-                        url: "/admin/activity/store",
-                        type: "POST",
-                        dataType: "json",
-                        headers: {
-                            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
-                                "content"
-                            ),
-                        },
-                        data: new FormData($("#myForm")[0]),
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        success: function (res) {
-                            if (res.success) {
-                                alert("success");
-                                //window.location = "/admin/insurance";
-                            }
-                        },
-                    });
-                    return (
-                        null !== e && 0 != e.length
-                            ? (o.$calendarObj.fullCalendar(
-                                  "renderEvent",
-                                  {
-                                      title: e,
-                                      start: t,
-                                      end: a,
-                                      allDay: !1,
-                                      className: n,
-                                  },
-                                  !0
-                              ),
-                              o.$modal.modal("hide"))
-                            : alert("You have to enter title to your sctivity"),
-                        !1
-                    );
-                }),
-                o.$calendarObj.fullCalendar("unselect");
-        }),
         (e.prototype.enableDrag = function () {
             l(this.$event).each(function () {
                 var e = { title: l.trim(l(this).text()) };
@@ -171,6 +82,15 @@
         }),
         (e.prototype.init = function () {
             this.enableDrag();
+            $.ajax({
+                url: "/all/activity",
+                type: "GET",
+                dataType: "json",
+                cache: false,
+                success: function (res) {
+                    console.log(res.data);
+                },
+            });
             var e = new Date(),
                 n =
                     (e.getDate(),
@@ -195,7 +115,7 @@
                         className: "bg-info",
                     },
                     {
-                        title: "Buy a Theme",
+                        title: "test",
                         start: new Date(l.now() + 338e6),
                         className: "bg-primary",
                     },

@@ -237,9 +237,9 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('admin.activity.create') }}">
+                            <a href="{{ route('admin.activity.index') }}">
                                 <i class="mdi mdi-view-dashboard"></i>
-                                <span> Activity </span>
+                                <span> Activities </span>
                             </a>
                         </li>
                         <li>
@@ -288,7 +288,7 @@
     <script src="{{ asset('assets\libs\jquery-ui\jquery-ui.min.js') }}"></script>
     <script src="{{ asset('assets\libs\fullcalendar\fullcalendar.min.js') }}"></script>
     <!-- Calendar init -->
-    <script src="{{ asset('assets\js\pages\calendar.init.js') }}"></script>
+    {{-- <script src="{{ asset('assets\js\pages\calendar.init.js') }}"></script> --}}
 
     <!-- Dashboard init js-->
     <script src="{{ asset('assets\js\pages\dashboard.init.js') }}"></script>
