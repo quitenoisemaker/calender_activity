@@ -184,10 +184,10 @@
                 <a href="{{ url('admin/home') }}" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         {{-- <img src="{{asset('assets\images\logo.png')}}" alt="" height="22"> --}}
-                        <span class="logo-lg-text-dark">J2G</span>
+                        <span class="logo-lg-text-dark">Cypress</span>
                     </span>
                     <span class="logo-sm">
-                        <span class="logo-lg-text-dark">J2G</span>
+                        <span class="logo-lg-text-dark">Cypress</span>
                         {{-- <img src="{{asset('assets\images\logo-sm.png')}}" alt="" height="24"> --}}
                     </span>
                 </a>
@@ -196,7 +196,7 @@
                     <span class="logo-lg text-white">
                     </span>
                     <span class="logo-sm">
-                        <span class="logo-lg-text-dark">J2G</span>
+                        <span class="logo-lg-text-dark">Cypress</span>
                         {{-- <img src="{{asset('assets\images\logo-sm-light.png')}}" alt="" height="24"> --}}
                     </span>
                 </a>
@@ -229,12 +229,12 @@
 
                         <li class="menu-title">Navigation</li>
 
-                        <li>
+                        {{-- <li>
                             <a href="{{ url('admin/home') }}">
                                 <i class="mdi mdi-view-dashboard"></i>
                                 <span> Dashboard </span>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li>
                             <a href="{{ route('admin.activity.index') }}">

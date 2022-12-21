@@ -33,10 +33,10 @@ class Activity extends Model
 
     public function getActivityCount($start_date, $end_date)
     {
-        if (self::whereDate('start_date', $start_date)->orWhereDate('end_date', $start_date)->count() > self::ACTIVITY_MAXIMUM) {
+        if (self::whereDate('start_date', $start_date)->orWhereDate('end_date', $start_date)->count() >= self::ACTIVITY_MAXIMUM) {
             // user found
             return "Maximum activity has been reached for the start_date";
-        } elseif (self::whereDate('start_date', $end_date)->orWhereDate('end_date', $end_date)->count() > self::ACTIVITY_MAXIMUM) {
+        } elseif (self::whereDate('start_date', $end_date)->orWhereDate('end_date', $end_date)->count() >= self::ACTIVITY_MAXIMUM) {
             # code...
             return "Maximum activity has been reached for the end_date";
         }

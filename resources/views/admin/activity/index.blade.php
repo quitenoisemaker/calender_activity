@@ -29,7 +29,7 @@
                     <div class="col-12">
                         <div class="col-12 p-2 d-flex justify-content-between">
                             <a href="{{ route('admin.activity.create') }}" class="btn btn-primary btn-sm m-1">Click to Add
-                                Activity</a>
+                                and view all global Activity</a>
                         </div>
                         <div class="card-box">
                             <div class="row">

@@ -72,9 +72,10 @@
                             </div> <!-- end row -->
 
                             <hr>
+                            <hr>
+                            <h4 class="pt-4">Global Activity List</h4>
                             <div class="col-12 pt-4">
                                 <div class="card-box text-white">
-
                                     <table id="datatable" class="table text-white table-striped table-bordered"
                                         style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                         <thead>

@@ -17,10 +17,10 @@
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Uplon</a></li>
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
-                                    <li class="breadcrumb-item active">Activity</li>
+                                    <li class="breadcrumb-item active">Users Activity</li>
                                 </ol>
                             </div>
-                            <h4 class="page-title">Activity</h4>
+                            <h4 class="page-title">Users Activity</h4>
                         </div>
                     </div>
                 </div>
