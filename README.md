@@ -26,6 +26,14 @@ Copy the .env.example file and rename it to .env. Then make the neccessary chang
                 DB_USERNAME=YOUR_DATABASE-USERNAME
                 DB_PASSWORD=YOUR_DATABASE-PASSWORD
 
+Generate key
+
+    php artisan key:gen
+
+Generate storage link
+
+    php artisan storage:link
+
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate
@@ -34,6 +42,14 @@ Run the database Seeder
 
     php artisan db:seed
 
+
+Install Passport Authentication
+
+    php artisan passport:install
+
+Run
+
+    php artisan passport:keys
 
 After that run the following command to generate a personal access client
 
