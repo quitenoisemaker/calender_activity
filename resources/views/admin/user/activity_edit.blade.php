@@ -44,7 +44,7 @@
                                     action="{{ route('admin.activity.update.user', ['activity_id' => $getActivity->id, 'user_id' => $user_id]) }}"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    {{-- <input type="hidden" value="0" name="global_status"> --}}
+
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="title">Title <span class="text-danger">*</span></label>

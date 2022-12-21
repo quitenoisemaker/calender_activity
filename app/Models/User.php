@@ -67,7 +67,6 @@ class User extends Authenticatable
     // method for admin authorization
     public function isAdmin()
     {
-
         if (($this->role->name === self::ADMIN)) {
             return true;
         }

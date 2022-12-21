@@ -35,8 +35,6 @@
                                         <div class="card-box tilebox-one bg-primary ">
                                             <i class="icon-people float-right m-0 h2 text-white"></i>
                                             <h6 class="text-uppercase mt-0 text-white">Calender</h6>
-                                            {{-- <h3 class="my-3" data-plugin="counterup">{{ $totalUsers->count() }}</h3> --}}
-                                            {{-- <span class="badge badge-success mr-1"> +11% </span> <span class="text-muted">From previous period</span> --}}
                                         </div>
                                     </a>
                                 </div>
@@ -56,9 +54,6 @@
                                         <div class="card-box tilebox-one bg-warning">
                                             <i class="icon-wallet float-right m-0 h2 text-white"></i>
                                             <h6 class="text-white text-uppercase mt-0">Click to view Users</h6>
-                                            {{-- <h3 class="my-3"><span
-                                                    data-plugin="counterup">{{ $totalSelectedAddresses->count() }}</span>
-                                            </h3> --}}
 
                                         </div>
                                     </a>

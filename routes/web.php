@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Activity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -25,7 +24,6 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/all/activity', [AdminController::class, 'getAllActivity']);
 Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::get('/home', [AdminController::class, 'dashboardIndex'])->name('home.admin');
     Route::get('/activity', [AdminController::class, 'index'])->name('admin.activity.index');
@@ -42,10 +40,4 @@ Route::middleware(['admin'])->prefix('admin')->group(function () {
     Route::post('/user/activity/update/{activity_id}/{user_id}', [AdminController::class, 'updateUserActivity'])->name('admin.activity.update.user');
     Route::get('/user/activity/create/{user_id}', [AdminController::class, 'createUserActivity'])->name('admin.activity.create.user');
     Route::post('/user/activity/store/{user_id}', [AdminController::class, 'storeUserActivity'])->name('admin.activity.store.user');
-});
-
-Route::get('/test', function (Activity $activity) {
-    $end = "2022-12-19";
-    $start = "2022-12-21";
-    return $activity->getActivityCount($start, $end);
 });

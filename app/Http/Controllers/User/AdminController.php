@@ -19,10 +19,8 @@ use App\Http\Resources\AllActivityResource;
 class AdminController extends Controller
 {
     //
-
     public function index()
     {
-
         $events = array();
         $getActivities = Activity::select('id', 'title', 'start_date', 'end_date')->get();
         $events =  AllActivityResource::collection($getActivities);
@@ -177,23 +175,5 @@ class AdminController extends Controller
         $activity->user()->attach($user_id);
 
         return redirect('admin/user/activities/' . $user_id);
-    }
-
-
-    public function getAllActivity()
-    {
-        $queries = [];
-        $getActivities = Activity::select('id', 'title', 'start_date', 'end_date')->get();
-
-        foreach ($getActivities as $getActivity) {
-            $queries[] = array(
-                'title' => $getActivity->title,
-                'start' => "2022-12-22 09:08:25",
-                'end' => "2022-12-22 09:08:25",
-            );
-        }
-        return response()->json([
-            'data' => $queries
-        ]);
     }
 }

@@ -50,7 +50,6 @@ class UserController extends Controller
 
         $result = $activity->getUserActivitiesOnDateRange($from, $to, $user);
 
-        // return $result;
         return $this->sendSuccessResponse('success', GetUserActivityResource::collection($result));
     }
 }
